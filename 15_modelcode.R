@@ -179,23 +179,23 @@ modelcode <- nimbleCode({
   ###
   #######################################################################
 
-  for (i in 1:n_fit_hunt){
-    y_hunt_foi_teststatus[i] ~ dFOIhunt(n_cases = n_cases_foi_hunt[1:n_fit_hunt],
-            n_samples = n_fit_hunt,
-            a = a_fit_hunt[1:n_fit_hunt],
-            sex = sex_fit_hunt[1:n_fit_hunt],
-            age2date = age2date_fit_hunt[1:n_fit_hunt],
-            f_age = f_age_foi[1:n_ageclassf],
-            m_age = m_age_foi[1:n_ageclassm],
-            age_lookup_f = age_lookup_f[1:n_age_lookup_f],
-            age_lookup_m = age_lookup_m[1:n_age_lookup_m],
-            period_lookup_foi = period_lookup_foi_hunt[1:nT_period_overall_hunt],
-            f_period = f_period_foi[1:n_year],
-            m_period = m_period_foi[1:n_year],
-            space = space[1:n_study_area],
-            sect = sect_hunt[1:n_fit_hunt]
-    )
-  }
+  y_hunt_foi ~ dFOIhunt(
+          y = y_hunt_foi_teststatus[1:n_fit_hunt],
+          n_cases = n_cases_foi_hunt[1:n_fit_hunt],
+          n_samples = n_fit_hunt,
+          a = a_fit_hunt[1:n_fit_hunt],
+          sex = sex_fit_hunt[1:n_fit_hunt],
+          age2date = age2date_fit_hunt[1:n_fit_hunt],
+          f_age = f_age_foi[1:n_ageclassf],
+          m_age = m_age_foi[1:n_ageclassm],
+          age_lookup_f = age_lookup_f[1:n_age_lookup_f],
+          age_lookup_m = age_lookup_m[1:n_age_lookup_m],
+          period_lookup_foi = period_lookup_foi_hunt[1:nT_period_overall_hunt],
+          f_period = f_period_foi[1:n_year],
+          m_period = m_period_foi[1:n_year],
+          space = space[1:n_study_area],
+          sect = sect_hunt[1:n_fit_hunt]
+  )
 
   ######################################################################
   ##
