@@ -392,7 +392,7 @@ n_fit_hunt <- nrow(d_fit_hunt)
 
 d_fit_sus_foi <- d_fit_sus[d_fit_sus$surv_censor == 1,]
 for(i in 1:nrow(d_fit_sus_foi)) {
-    if(!is.na(d_fit_sus_foi$right_age_s[i])){
+    if(!is.na(d_fit_sus_foi$right_age_smonth[i])){
         d_fit_sus_foi$right[i] <- d_fit_sus_foi$right_age_smonth[i]
     }
 }
@@ -439,6 +439,7 @@ n_fit_rec_neg_cens_postno_foi <- nrow(d_fit_rec_neg_cens_postno_foi)
 
 d_fit_recap_foi <- d_fit_recap[d_fit_recap$surv_censor == 1,]
 d_fit_recap_foi$teststatus <- 1
+d_fit_recap_foi$left <- d_fit_recap_foi$left_age_month
 d_fit_recap_foi$right <- d_fit_recap_foi$agemonth_recap
 # d_fit_recap_foi$right <- d_fit_recap_foi$ageweek_recap
 
@@ -516,3 +517,6 @@ d_fit_rec_pos_mort$periodweek_recap[which(d_fit_rec_pos_mort$ageweek_recap -
 
 d_fit_rec_pos_mort$ageweek_recap - d_fit_rec_pos_mort$left_age_e 
 d_fit_rec_pos_mort$periodweek_recap - d_fit_rec_pos_mort$left_period_e
+
+
+

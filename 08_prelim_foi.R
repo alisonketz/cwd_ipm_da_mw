@@ -44,7 +44,7 @@ age_lookup_f <- c(rep(1:4, each = intvl_step_yr_monthly),
                        rep(5, 2 * intvl_step_yr_monthly),
                        rep(6, 3 * intvl_step_yr_monthly))
 age_lookup_f <- c(age_lookup_f,
-                  rep(7, nT_age_foi - length(intvl_step_yr_monthly)))
+                  rep(7, nT_age_foi - length(age_lookup_f)))
 
 age_lookup_m <- c(rep(1:4, each = intvl_step_yr_monthly),
                        rep(5, 2 * intvl_step_yr_monthly),
@@ -52,6 +52,8 @@ age_lookup_m <- c(rep(1:4, each = intvl_step_yr_monthly),
 age_lookup_m <- c(age_lookup_m,
                   rep(6, nT_age_foi - length(age_lookup_m)))
 
+n_age_lookup_f <- length(age_lookup_f)
+n_age_lookup_m <- length(age_lookup_m)
 
 ######################################################
 ### age to date conversion for FOI age/period effects

@@ -284,7 +284,7 @@ dFOIcollar <- nimble::nimbleFunction(
     #total probability of getting infected
     p <- 1 - exp(-sum(exp(gam[left:(right - 1)])))
     logL <- dbinom(x, 1, p, log = TRUE)
-
+    if(is.na(logL)){stop("ack")}    
     returnType(double(0))
     if(log) return(logL) else return(exp(logL))    ## return log-likelihood
   })
@@ -314,6 +314,70 @@ nimble::registerDistributions(list(
 
 # for a user-defined distribution
 assign('dFOIcollar', dFOIcollar, envir = .GlobalEnv)
+
+i=70
+        x =  d_fit_sus_foi$teststatus[i]
+        left = d_fit_sus_foi$left[i]
+        right = d_fit_sus_foi$right[i]
+        sex =  d_fit_sus_foi$sex[i]
+        age2date = d_fit_sus_foi$age2date[i]
+
+
+# test=c()
+# for(i in 1:n_fit_sus_foi){
+# test[i] <- dFOIcollar(
+#         x =  d_fit_sus_foi$teststatus[i],
+#         left = d_fit_sus_foi$left[i],
+#         right = d_fit_sus_foi$right[i],
+#         sex =  d_fit_sus_foi$sex[i],
+#         age2date = d_fit_sus_foi$age2date[i],
+#         m_age = c(rnorm(1, -6, sd = .1),
+#                   rnorm(1, -5.5, sd = .1),
+#                   rnorm(1, -5, sd = .1),
+#                   rnorm(1, -5.5, sd = .1),
+#                   rnorm(1, -6, sd = .1),
+#                   rnorm(1, -7.2, sd = .1)) - 1.5,
+#         f_age = c(rnorm(1, -6, sd = .1),
+#                   rnorm(1, -5.5, sd = .1),
+#                   rnorm(1, -6, sd = .1),
+#                   rnorm(1, -6.5, sd = .1),
+#                   rnorm(1, -6.8, sd = .1),
+#                   rnorm(1, -7.2, sd = .1),
+#                   rnorm(1, -8, sd = .1)) - 1.5,
+#         age_lookup_f = age_lookup_f,
+#         age_lookup_m = age_lookup_m,
+#         period_lookup=period_lookup_foi,
+#         f_period=rep(0, n_year),
+#         m_period=rep(0, n_year),
+#         space = -.55,
+#         log = TRUE
+#         ) 
+# }
+# test
+# i=1
+# x = d_fit_recap_foi$teststatus[i] 
+#       left = d_fit_recap_foi$left[i]
+#       right = d_fit_recap_foi$right[i]
+#       sex = d_fit_recap_foi$sex[i]
+#       age2date = d_fit_recap_foi$age2date[i]
+
+#   for (i in 1:n_fit_recap_foi){
+#     dFOIcollar(x = d_fit_recap_foi$teststatus[i],
+#       left = d_fit_recap_foi$left[i],
+#       right = d_fit_recap_foi$right[i],
+#       sex = d_fit_recap_foi$sex[i],
+#       age2date = d_fit_recap_foi$age2date[i],
+#       f_age = f_age_foi[1:n_ageclassf],
+#       m_age = m_age_foi[1:n_ageclassm],
+#       age_lookup_f = age_lookup_f[1:n_age_lookup_f],
+#       age_lookup_m = age_lookup_m[1:n_age_lookup_m],
+#       period_lookup = period_lookup_foi[1:nT_period_overall],
+#       f_period = f_period_foi[1:n_year],
+#       m_period = m_period_foi[1:n_year],
+#       space = -.55)
+#   }
+
+
 
 ##################################################################
 ###
