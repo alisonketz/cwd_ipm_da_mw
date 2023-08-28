@@ -315,6 +315,27 @@ nimble::registerDistributions(list(
 # for a user-defined distribution
 assign('dFOIcollar', dFOIcollar, envir = .GlobalEnv)
 
+# space_test <- c(0,.5)
+# test <- c()
+#   for (i in 1:n_fit_rec_neg_cens_postno_foi){
+#     test[i] <- dFOIcollar(
+#         x =  d_fit_rec_neg_cens_postno_foi$teststatus[i]
+#       left =  d_fit_rec_neg_cens_postno_foi$left[i],
+#       right = d_fit_rec_neg_cens_postno_foi$right[i],
+#       sex =  d_fit_rec_neg_cens_postno_foi$sex[i],
+#       age2date = d_fit_rec_neg_cens_postno_foi$age2date[i],
+#       f_age = f_age_foi[1:n_ageclassf],
+#       m_age = m_age_foi[1:n_ageclassm],
+#       age_lookup_f = age_lookup_f[1:n_age_lookup_f],
+#       age_lookup_m = age_lookup_m[1:n_age_lookup_m],
+#       period_lookup = period_lookup_foi[1:nT_period_overall],
+#       f_period = f_period_foi[1:n_year],
+#       m_period = m_period_foi[1:n_year],
+#       space = space_test[d_fit_rec_neg_cens_postno_foi$study_area[i]])
+#   }
+
+
+
 ##################################################################
 ###
 ###  User Defined Distribution
